@@ -1,0 +1,24 @@
+name: verbum_app
+description: "A new Flutter project."
+publish_to: 'none'
+version: 0.1.0
+
+environment:
+  sdk: ^3.7.2
+
+dependencies:
+  flutter:
+    sdk: flutter
+  firebase_core:
+  firebase_auth:
+  cloud_firestore:
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: 
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/matrix/index.html
