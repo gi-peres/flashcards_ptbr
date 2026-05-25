@@ -9,9 +9,10 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  firebase_core:
+  firebase_core: ^4.9.0
   firebase_auth:
   cloud_firestore:
+  firebase_ai: ^3.12.1
 
 dev_dependencies:
   flutter_test:
@@ -22,3 +23,5 @@ flutter:
   uses-material-design: true
   assets:
     - assets/matrix/index.html
+    - assets/gifs/matrix.gif
+  
