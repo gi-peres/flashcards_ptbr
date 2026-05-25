@@ -22,7 +22,6 @@ class MyApp extends StatelessWidget {
         '/login': (_) => const LoginPage(),
         '/register': (_) => const RegisterPage(),
         '/difficulty': (_) => const DifficultyPage(),
-        '/arena': (_) => const ArenaPage(),
         '/help': (_) => const HelpPage(),
         '/oracle': (_) => const OraclePage(),
       },

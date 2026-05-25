@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'widgets/matrix_button.dart';
 import 'widgets/typing_text.dart';
 
@@ -7,32 +8,55 @@ class OraclePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    final data =
+        ModalRoute.of(context)!.settings.arguments
+            as Map<String, dynamic>;
+
     return Scaffold(
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+
             const TypingText("ANÁLISE IA"),
-            const TypingText("88%", size: 30),
-            const Padding(
-              padding: EdgeInsets.all(10),
+
+            TypingText(
+              "${data['porcentagem']}%",
+              size: 30,
+            ),
+
+            Padding(
+              padding: const EdgeInsets.all(10),
               child: Text(
-                'DICIONÁRIO: tristeza, melancólico',
-                style: TextStyle(color: Colors.greenAccent),
+                'DICIONÁRIO: ${data['significado']}',
+                style: const TextStyle(
+                  color: Colors.greenAccent,
+                ),
               ),
             ),
-            const Padding(
-              padding: EdgeInsets.all(10),
+
+            Padding(
+              padding: const EdgeInsets.all(10),
               child: Text(
-                '"Excelente conexão"',
-                style: TextStyle(color: Colors.greenAccent),
+                '"${data['feedback']}"',
+                style: const TextStyle(
+                  color: Colors.greenAccent,
+                ),
               ),
             ),
-            MatrixButton("NOVO DESAFIO",
-                () => Navigator.pushNamed(context, '/arena')),
+
+            MatrixButton(
+              "NOVO DESAFIO",
+              () => Navigator.pushNamed(
+                context,
+                '/difficulty',
+              ),
+            ),
           ],
         ),
       ),
     );
   }
 }
+

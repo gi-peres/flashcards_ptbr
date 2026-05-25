@@ -27,7 +27,7 @@ class _RegisterPageState extends State<RegisterPage> {
   Future<void> cadastrarUsuario() async {
   try {
     UserCredential userCredential =
-        await FirebaseAuth.instance.createUserWithEmailAndPassword(
+      await FirebaseAuth.instance.createUserWithEmailAndPassword(
       email: emailController.text.trim(),
       password: senhaController.text.trim(),
     );
