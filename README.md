@@ -192,9 +192,6 @@ flashcards_ptbr/
 
 ## Troubleshooting
 
-### Erro: permission-denied ao salvar palavras
-Solução: Verifique se as regras Firestore foram publicadas corretamente.
-
 ### Erro: quota exceeded na IA
 Solução: Você atingiu o limite gratuito (20 req/min). Aguarde 15 segundos ou upgrade para plano pago.
 
