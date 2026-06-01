@@ -26,8 +26,9 @@ class RegisterPage extends StatelessWidget {
     } on FirebaseAuthException catch (e) {
       String erro = "Erro ao cadastrar";
 
-      if (e.code == 'email-already-in-use')
+      if (e.code == 'email-already-in-use') {
         erro = "Esse email já está cadastrado";
+      }
       if (e.code == 'weak-password') erro = "Senha muito fraca";
       if (e.code == 'invalid-email') erro = "Email inválido";
 

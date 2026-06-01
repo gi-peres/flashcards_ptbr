@@ -88,7 +88,7 @@ class MatrixPainter extends CustomPainter {
         Color color =
             j == 0
                 ? Color.fromARGB((opacity * 255).toInt(), 0, 255, 70)
-                : const Color.fromARGB(255, 30, 122, 2).withOpacity(opacity);
+                : const Color.fromARGB(255, 30, 122, 2);
 
         textPainter.text = TextSpan(
           text: chars[i],

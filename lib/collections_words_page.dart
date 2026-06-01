@@ -176,7 +176,7 @@ class CollectionsWordsPage extends StatelessWidget {
                         Container(
                           padding: EdgeInsets.symmetric(horizontal: 8, vertical: 2),
                           decoration: BoxDecoration(
-                            color: _corDificuldade(doc['dificuldade'] ?? '').withOpacity(0.2),
+                            color: _corDificuldade(doc['dificuldade'] ?? '').withValues(alpha: 0.2),
                             border: Border.all(color: _corDificuldade(doc['dificuldade'] ?? '')),
                             borderRadius: BorderRadius.circular(12),
                           ),
