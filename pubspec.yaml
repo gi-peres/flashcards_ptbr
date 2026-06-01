@@ -19,9 +19,13 @@ dev_dependencies:
     sdk: flutter
   flutter_lints: 
 
+flutter_launcher_icons:
+  android: true
+  ios: true
+  image_path: "assets/icon/icon.png"
+
 flutter:
   uses-material-design: true
   assets:
-    - assets/matrix/index.html
     - assets/gifs/matrix.gif
   
