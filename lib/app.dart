@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
-import 'RegisterPage.dart';
-import 'LoginPage.dart'; 
-import 'DifficultyPage.dart';
-import 'ArenaPage.dart';
-import 'HelpPage.dart';
-import 'OraclePage.dart';
-
+import 'register_page.dart';
+import 'login_page.dart';
+import 'difficulty_page.dart';
+import 'oracle_page.dart';
+import 'collections_words_page.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -13,18 +11,16 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: ThemeData.dark().copyWith(scaffoldBackgroundColor: Colors.black),
       debugShowCheckedModeBanner: false,
-      theme: ThemeData.dark().copyWith(
-        scaffoldBackgroundColor: Colors.black,
-      ),
-      initialRoute: '/login',
       routes: {
-        '/login': (_) => const LoginPage(),
-        '/register': (_) => const RegisterPage(),
-        '/difficulty': (_) => const DifficultyPage(),
-        '/help': (_) => const HelpPage(),
-        '/oracle': (_) => const OraclePage(),
+        '/login': (_) => LoginPage(),
+        '/register': (_) => RegisterPage(),
+        '/difficulty': (_) => DifficultyPage(),
+        '/oracle': (_) => OraclePage(),
+        '/collections': (_) => CollectionsWordsPage(),
       },
+      initialRoute: '/login',
     );
   }
 }

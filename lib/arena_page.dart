@@ -1,12 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-
-import 'widgets/matrix_input.dart';
-import 'widgets/matrix_button.dart';
-
 import 'gemini_service.dart';
-
-final FirebaseAuth _auth = FirebaseAuth.instance;
 
 class ArenaPage extends StatefulWidget {
   final String dificuldade;
@@ -18,8 +12,8 @@ class ArenaPage extends StatefulWidget {
 }
 
 class _ArenaPageState extends State<ArenaPage> {
+  final _auth = FirebaseAuth.instance;
   final gemini = GeminiService();
-
   final respostaController = TextEditingController();
 
   String palavra = "";
@@ -28,24 +22,24 @@ class _ArenaPageState extends State<ArenaPage> {
   @override
   void initState() {
     super.initState();
-
     carregarPalavra();
   }
 
-  Future<void> carregarPalavra() async {
-    print("INICIOU");
+  @override
+  void dispose() {
+    respostaController.dispose();
+    super.dispose();
+  }
 
+  void carregarPalavra() async {
     final resultado = await gemini.gerarPalavra(widget.dificuldade);
-
-    print(resultado);
-
     setState(() {
       palavra = resultado['palavra'];
       significado = resultado['significado'];
     });
   }
 
-  Future<void> enviarResposta() async {
+  void enviarResposta() async {
     final analise = await gemini.analisarResposta(
       palavra: palavra,
       significadoReal: significado,
@@ -61,6 +55,8 @@ class _ArenaPageState extends State<ArenaPage> {
         "porcentagem": analise["porcentagem"],
         "feedback": analise["feedback"],
         "significado": significado,
+        "palavra": palavra,
+        "dificuldade": widget.dificuldade,
       },
     );
   }
@@ -69,29 +65,47 @@ class _ArenaPageState extends State<ArenaPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Nome do escolhido ${_auth.currentUser?.displayName}'),
-        backgroundColor: Colors.black,
+        title: Text('Decifre o código, ${_auth.currentUser?.displayName}'),
         foregroundColor: Colors.greenAccent,
+        backgroundColor: Colors.transparent,
+        elevation: 0,
       ),
-
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
               palavra.isEmpty ? "CARREGANDO..." : palavra.toUpperCase(),
-              style: const TextStyle(color: Colors.greenAccent, fontSize: 28),
+              style: TextStyle(color: Colors.greenAccent, fontSize: 28),
             ),
-
             Padding(
-              padding: const EdgeInsets.all(20),
-              child: MatrixInput(
-                "Digite o significado_",
+              padding: EdgeInsets.all(20),
+              child: TextField(
                 controller: respostaController,
+                style: TextStyle(color: Colors.greenAccent),
+                cursorColor: Colors.greenAccent,
+                decoration: InputDecoration(
+                  hintText: "Digite o significado_",
+                  hintStyle: TextStyle(color: Colors.greenAccent),
+                  enabledBorder: UnderlineInputBorder(
+                    borderSide: BorderSide(color: Colors.greenAccent),
+                  ),
+                  focusedBorder: UnderlineInputBorder(
+                    borderSide: BorderSide(color: Colors.greenAccent),
+                  ),
+                ),
               ),
             ),
-
-            MatrixButton("SUBMETER AO ORÁCULO", enviarResposta),
+            OutlinedButton(
+              style: OutlinedButton.styleFrom(
+                side: BorderSide(color: Colors.greenAccent),
+              ),
+              onPressed: enviarResposta,
+              child: Text(
+                "SUBMETER AO ORÁCULO",
+                style: TextStyle(color: Colors.greenAccent),
+              ),
+            ),
           ],
         ),
       ),

@@ -4,11 +4,8 @@ import 'package:firebase_ai/firebase_ai.dart';
 import 'firebase_options.dart';
 import 'app.dart';
 
-Future<void> main() async {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
- await Firebase.initializeApp(
-  options: DefaultFirebaseOptions.currentPlatform,
-  );
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   runApp(const MyApp());
 }
