@@ -28,7 +28,6 @@ Aplicativo educativo que revoluciona o aprendizado de vocabulário em português
 ## Tecnologias Utilizadas
 
 | Categoria | Tecnologia |
-|-----------|-----------||
 | Framework | Flutter 3.7+ |
 | Linguagem | Dart |
 | Backend | Firebase (Auth + Firestore) |
