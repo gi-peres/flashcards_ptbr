@@ -19,16 +19,26 @@ class _ArenaPageState extends State<ArenaPage> {
   String palavra = "";
   String significado = "";
 
+  Color get corDificuldade {
+    switch (widget.dificuldade) {
+      case "TRINITY":
+        return Colors.green;
+
+      case "MORPHEUS":
+        return Colors.yellow;
+
+      case "NEO":
+        return Colors.red;
+
+      default:
+        return Colors.greenAccent;
+    }
+  }
+
   @override
   void initState() {
     super.initState();
     carregarPalavra();
-  }
-
-  @override
-  void dispose() {
-    respostaController.dispose();
-    super.dispose();
   }
 
   void carregarPalavra() async {
@@ -66,7 +76,7 @@ class _ArenaPageState extends State<ArenaPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Decifre o código, ${_auth.currentUser?.displayName}'),
-        foregroundColor: Colors.greenAccent,
+        foregroundColor: corDificuldade,
         backgroundColor: Colors.transparent,
         elevation: 0,
       ),
@@ -76,34 +86,34 @@ class _ArenaPageState extends State<ArenaPage> {
           children: [
             Text(
               palavra.isEmpty ? "CARREGANDO..." : palavra.toUpperCase(),
-              style: TextStyle(color: Colors.greenAccent, fontSize: 28),
+              style: TextStyle(color: corDificuldade, fontSize: 28),
             ),
             Padding(
               padding: EdgeInsets.all(20),
               child: TextField(
                 controller: respostaController,
-                style: TextStyle(color: Colors.greenAccent),
-                cursorColor: Colors.greenAccent,
+                style: TextStyle(color: corDificuldade),
+                cursorColor: corDificuldade,
                 decoration: InputDecoration(
                   hintText: "Digite o significado_",
-                  hintStyle: TextStyle(color: Colors.greenAccent),
+                  hintStyle: TextStyle(color: corDificuldade),
                   enabledBorder: UnderlineInputBorder(
-                    borderSide: BorderSide(color: Colors.greenAccent),
+                    borderSide: BorderSide(color: corDificuldade),
                   ),
                   focusedBorder: UnderlineInputBorder(
-                    borderSide: BorderSide(color: Colors.greenAccent),
+                    borderSide: BorderSide(color: corDificuldade),
                   ),
                 ),
               ),
             ),
             OutlinedButton(
               style: OutlinedButton.styleFrom(
-                side: BorderSide(color: Colors.greenAccent),
+                side: BorderSide(color: corDificuldade),
               ),
               onPressed: enviarResposta,
               child: Text(
                 "SUBMETER AO ORÁCULO",
-                style: TextStyle(color: Colors.greenAccent),
+                style: TextStyle(color: corDificuldade),
               ),
             ),
           ],

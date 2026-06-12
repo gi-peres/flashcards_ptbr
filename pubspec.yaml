@@ -19,10 +19,14 @@ dev_dependencies:
     sdk: flutter
   mocktail: ^1.0.4
   flutter_lints: 
+  flutter_launcher_icons: ^0.14.3
+
+flutter_launcher_icons:
+  android: true
+  image_path: "assets/icon/icon.png"
 
 flutter:
   uses-material-design: true
   assets:
-    - assets/matrix/index.html
     - assets/gifs/matrix.gif
   

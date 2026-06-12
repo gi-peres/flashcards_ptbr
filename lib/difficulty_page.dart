@@ -14,7 +14,7 @@ class DifficultyPage extends StatelessWidget {
         backgroundColor: Colors.transparent,
         elevation: 0,
         title: Text(
-          'Conexão estabelecida, Escolhido ${_auth.currentUser?.displayName}!',
+          'Conexão estabelecida,\nEscolhido ${_auth.currentUser?.displayName}!',
           style: TextStyle(color: Colors.greenAccent),
         ),
         actions: [
@@ -47,12 +47,13 @@ class DifficultyPage extends StatelessWidget {
                 style: OutlinedButton.styleFrom(
                   side: BorderSide(color: Colors.green),
                 ),
-                onPressed: () => Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (_) => ArenaPage(dificuldade: "TRINITY"),
-                  ),
-                ),
+                onPressed:
+                    () => Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (_) => ArenaPage(dificuldade: "TRINITY"),
+                      ),
+                    ),
                 child: Text("TRINITY", style: TextStyle(color: Colors.green)),
               ),
               SizedBox(height: 20),
@@ -60,12 +61,13 @@ class DifficultyPage extends StatelessWidget {
                 style: OutlinedButton.styleFrom(
                   side: BorderSide(color: Colors.yellow),
                 ),
-                onPressed: () => Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (_) => ArenaPage(dificuldade: "MORPHEUS"),
-                  ),
-                ),
+                onPressed:
+                    () => Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (_) => ArenaPage(dificuldade: "MORPHEUS"),
+                      ),
+                    ),
                 child: Text("MORPHEUS", style: TextStyle(color: Colors.yellow)),
               ),
               SizedBox(height: 20),
@@ -73,12 +75,13 @@ class DifficultyPage extends StatelessWidget {
                 style: OutlinedButton.styleFrom(
                   side: BorderSide(color: Colors.red),
                 ),
-                onPressed: () => Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (_) => ArenaPage(dificuldade: "NEO"),
-                  ),
-                ),
+                onPressed:
+                    () => Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (_) => ArenaPage(dificuldade: "NEO"),
+                      ),
+                    ),
                 child: Text("NEO", style: TextStyle(color: Colors.red)),
               ),
               SizedBox(height: 40),

@@ -1,6 +1,6 @@
 {
-    "name": "pomodoro_app",
-    "short_name": "pomodoro_app",
+    "name": "verbum_app",
+    "short_name": "verbum_app",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
