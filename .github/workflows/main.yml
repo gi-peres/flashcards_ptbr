@@ -1,12 +1,46 @@
-name: Build Flutter APK
+name: Pipeline CI/CD Flutter
 
 on:
   push:
     branches:
       - main
+  pull_request:
+    branches:
+      - main
 
 jobs:
-  build:
+  # JOB 1: Roda os testes automatizados (Exigência do Professor)
+  executar-testes:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # Usando a versão v4 que já estava no seu script
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 17
+
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: "3.35.0"
+          channel: stable
+          cache: true
+
+      - name: Install dependencies
+        run: flutter pub get
+
+      # Comando solicitado na atividade para rodar testes e gerar cobertura
+      - name: Rodar Testes Automatizados
+        run: flutter test --coverage
+
+  # JOB 2: Só vai rodar para gerar o APK se os testes passarem com sucesso
+  build-apk:
+    needs: executar-testes # Isso garante que o APK só gera se o teste passar!
     runs-on: ubuntu-latest
 
     steps:
