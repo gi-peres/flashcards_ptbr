@@ -11,7 +11,7 @@ class GeminiService {
     return response.text ?? '';
   }
 
-  Map<String, dynamic> _parseJson(String text) {
+  static Map<String, dynamic> parseJson(String text) {
     final match = RegExp(r'\{.*\}', dotAll: true).firstMatch(text);
     return jsonDecode(match?.group(0) ?? '{}');
   }
@@ -30,7 +30,7 @@ class GeminiService {
     Dificuldade escolhida: $dificuldade
     ''');
 
-    return _parseJson(text);
+    return parseJson(text);
   }
 
   Future<Map<String, dynamic>> analisarResposta({
@@ -50,6 +50,6 @@ class GeminiService {
     Retorne APENAS JSON: { "porcentagem": 0, "feedback": "" }
     ''');
 
-    return _parseJson(text);
+    return parseJson(text);
   }
 }

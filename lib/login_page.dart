@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class LoginPage extends StatelessWidget {
+  LoginPage({super.key, this.auth});
+
+  final FirebaseAuth? auth;
   final txtEmail = TextEditingController();
   final txtSenha = TextEditingController();
 
@@ -66,19 +69,31 @@ class LoginPage extends StatelessWidget {
                   foregroundColor: Colors.black,
                 ),
                 onPressed: () async {
+                  if (txtEmail.text.isEmpty || txtSenha.text.isEmpty) {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(
+                        content: Text('Por favor, preencha todos os campos'),
+                        backgroundColor: Colors.red,
+                        behavior: SnackBarBehavior.floating,
+                      ),
+                    );
+                    return;
+                  }
+
                   try {
-                    await FirebaseAuth.instance.signInWithEmailAndPassword(
+                    final firebaseAuth = auth ?? FirebaseAuth.instance;
+                    await firebaseAuth.signInWithEmailAndPassword(
                       email: txtEmail.text,
                       password: txtSenha.text,
                     );
                     Navigator.pushReplacementNamed(context, '/difficulty');
                   } on FirebaseAuthException catch (ex) {
-                  final snackBar = SnackBar(
-                  content: Text(ex.message!),
-                  backgroundColor: Colors.red,
-                  behavior: SnackBarBehavior.floating,
-                  );
-                  ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                    final snackBar = SnackBar(
+                      content: Text(ex.message!),
+                      backgroundColor: Colors.red,
+                      behavior: SnackBarBehavior.floating,
+                    );
+                    ScaffoldMessenger.of(context).showSnackBar(snackBar);
                   }
                 },
                 child: Text("ENTRAR NA MATRIX"),
