@@ -20,7 +20,7 @@ void main() {
 
 
   // --- EXECUÇÃO 2: RETORNO DO SERVIDOR / FIREBASE (Cenário de erro de autenticação) ---
-  /*testWidgets('Execução 2: Deve mostrar SnackBar com erro do Firebase quando a senha estiver errada', (WidgetTester tester) async {
+  testWidgets('Execução 2: Deve mostrar SnackBar com erro do Firebase quando a senha estiver errada', (WidgetTester tester) async {
     // Carrega a página no teste
     await tester.pumpWidget(MaterialApp(home: LoginPage()));
 
@@ -37,5 +37,5 @@ void main() {
     // O teste valida se o seu 'ex.message!' foi exibido na tela vermelha do SnackBar.
     // (O mock do firebase_auth_mocks costuma retornar uma mensagem padrão de erro)
     expect(find.byType(SnackBar), findsOneWidget);
-  });*/
+  });
 }
